@@ -1,2 +1,2 @@
 # to-do-List
- Aplication
+ Application
