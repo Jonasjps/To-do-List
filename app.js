@@ -29,8 +29,9 @@ todosContainer.addEventListener('click', event => {
 formSearch.addEventListener('input', event => {
     const filtrandoTodos = event.target.value.trim()
     
-    Array.from(todosContainer.children).filter(todo => {
-        console.log(todo.textContent )
-    })
+    const newArrayFilter = Array.from(todosContainer.children)
+        .filter(todo => !todo.textContent.includes(filtrandoTodos))
+
+    console.log(newArrayFilter)
     
 })
