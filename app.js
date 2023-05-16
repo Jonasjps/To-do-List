@@ -29,13 +29,20 @@ todosContainer.addEventListener('click', event => {
 formSearch.addEventListener('input', event => {
     const filtrandoTodos = event.target.value.trim()
     
-    const newArrayFilter = Array.from(todosContainer.children)
-        .filter(todo => !todo.textContent.includes(filtrandoTodos))
+    Array.from(todosContainer.children)
+        .filter(todo => !todo.textContent.toLowerCase().includes(filtrandoTodos))
         .forEach(todo => {
             todo.classList.remove('d-flex')
             todo.classList.add('hedden')
         })
 
-    console.log(newArrayFilter)
+    Array.from(todosContainer.children)
+        .filter(todo => todo.textContent.toLowerCase().includes(filtrandoTodos))
+        .forEach(todo => {
+            todo.classList.remove('hedden')
+            todo.classList.add('d-flex')
+        })
+
+    
     
 })
