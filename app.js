@@ -31,6 +31,10 @@ formSearch.addEventListener('input', event => {
     
     const newArrayFilter = Array.from(todosContainer.children)
         .filter(todo => !todo.textContent.includes(filtrandoTodos))
+        .forEach(todo => {
+            todo.classList.remove('d-flex')
+            todo.classList.add('hedden')
+        })
 
     console.log(newArrayFilter)
     
