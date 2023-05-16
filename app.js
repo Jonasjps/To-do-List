@@ -1,5 +1,7 @@
 const formAddTodo  = document.querySelector('.form-add-todo') 
 const todosContainer = document.querySelector('.todos-container')
+const formSearch = document.querySelector('.form-search')
+
 
 formAddTodo.addEventListener('submit', event => {
     event.preventDefault()
@@ -22,5 +24,13 @@ todosContainer.addEventListener('click', event => {
     if (Array.from(valueDoInput.classList).includes('delete')) {
         valueDoInput.parentElement.remove()
     }
-    // console.log(obtendoResultado)
+})
+
+formSearch.addEventListener('input', event => {
+    const filtrandoTodos = event.target.value.trim()
+    
+    Array.from(todosContainer.children).filter(todo => {
+        console.log(todo.textContent )
+    })
+    
 })
