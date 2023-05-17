@@ -20,9 +20,12 @@ formAddTodo.addEventListener('submit', event => {
 })
 
 todosContainer.addEventListener('click', event => {
-    const valueDoInput = event.target
-    if (Array.from(valueDoInput.classList).includes('delete')) {
-        valueDoInput.parentElement.remove()
+    const valueDoInput = event.target.dataset.trash
+    const referenceTodo = document.querySelector(`.[data-todo="${valueDoInput}"]`)
+    
+    
+    if (valueDoInput) {
+        referenceTodo.remove()
     }
 })
 
