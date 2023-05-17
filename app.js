@@ -21,7 +21,7 @@ formAddTodo.addEventListener('submit', event => {
 
 todosContainer.addEventListener('click', event => {
     const valueDoInput = event.target.dataset.trash
-    const referenceTodo = document.querySelector(`.[data-todo="${valueDoInput}"]`)
+    const referenceTodo = document.querySelector(`[data-todo="${valueDoInput}"]`)
     
     
     if (valueDoInput) {
