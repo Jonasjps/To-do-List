@@ -21,7 +21,7 @@ formAddTodo.addEventListener('submit', event => {
 
 todosContainer.addEventListener('click', event => {
     const valueDoInput = event.target
-    const clickedElement = Array.from(todosContainer.children).includes(valueDoInput)
+    const clickedElement = Array.from(todosContainer.classList).includes('delete')
     
     if (clickedElement) {
         valueDoInput.parentElement.remove()
