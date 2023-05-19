@@ -16,18 +16,14 @@ const NewLiNoTodo = (valueDoInput,event) => {
 
 formAddTodo.addEventListener('submit', event => {
     event.preventDefault()
-
     const valueDoInput = event.target.add.value.trim()
     NewLiNoTodo(valueDoInput, event)
-    
 })
 
 todosContainer.addEventListener('click', event => {
     const valueDoInput = event.target
     const clickedElement = Array.from(valueDoInput.classList).includes('delete')
 
-
-    // console.log(Array.from(valueDoInput.classList).includes('delete'))
     if (clickedElement) {
         valueDoInput.parentElement.remove()
     }
