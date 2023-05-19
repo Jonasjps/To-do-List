@@ -2,7 +2,7 @@ const formAddTodo  = document.querySelector('.form-add-todo')
 const todosContainer = document.querySelector('.todos-container')
 const formSearch = document.querySelector('.form-search')
 
-const NewLiNoTodo = valueDoInput => {
+const NewLiNoTodo = (valueDoInput,event) => {
     if (valueDoInput.length) {
         todosContainer.innerHTML += `
             <li class="list-group-item d-flex justify-content-between align-items-center" >
@@ -18,7 +18,7 @@ formAddTodo.addEventListener('submit', event => {
     event.preventDefault()
 
     const valueDoInput = event.target.add.value.trim()
-    NewLiNoTodo(valueDoInput)
+    NewLiNoTodo(valueDoInput, event)
     
 })
 
