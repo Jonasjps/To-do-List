@@ -22,29 +22,32 @@ formAddTodo.addEventListener('submit', event => {
 
 todosContainer.addEventListener('click', event => {
     const valueDoInput = event.target.dataset.trash
-    // const clickedElement = Array.from(valueDoInput.classList).includes('delete')
     const refferenciaDoTodo =  document.querySelector(`[data-todo="${valueDoInput}"]`)
-    // console.log(valueDoInput)
+
     if (valueDoInput) {
         refferenciaDoTodo.remove()
     }
 })
 
-formSearch.addEventListener('input', event => {
-    const filtrandoTodos = event.target.value.trim()
-    
+const filtrandoTodosDoInput = filtrandoTodos => {
     Array.from(todosContainer.children)
         .filter(todo => !todo.textContent.toLowerCase().includes(filtrandoTodos))
         .forEach(todo => {
             todo.classList.remove('d-flex')
             todo.classList.add('hedden')
         })
-
+    
     Array.from(todosContainer.children)
         .filter(todo => todo.textContent.toLowerCase().includes(filtrandoTodos))
         .forEach(todo => {
             todo.classList.remove('hedden')
             todo.classList.add('d-flex')
         })
+
+}
+
+formSearch.addEventListener('input', event => {
+    const filtrandoTodos = event.target.value.trim()
+    filtrandoTodosDoInput(filtrandoTodos)  
 
 })
