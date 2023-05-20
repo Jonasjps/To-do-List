@@ -5,9 +5,9 @@ const formSearch = document.querySelector('.form-search')
 const NewLiNoTodo = (valueDoInput,event) => {
     if (valueDoInput.length) {
         todosContainer.innerHTML += `
-            <li class="list-group-item d-flex justify-content-between align-items-center" >
+            <li class="list-group-item d-flex justify-content-between align-items-center" data-todo="${valueDoInput}" >
                 <span>${valueDoInput}</span>
-                <i class="far fa-trash-alt delete" ></i>
+                <i class="far fa-trash-alt delete" data-trash="${valueDoInput}"></i>
            </li>
         `
     }
@@ -21,11 +21,12 @@ formAddTodo.addEventListener('submit', event => {
 })
 
 todosContainer.addEventListener('click', event => {
-    const valueDoInput = event.target
-    const clickedElement = Array.from(valueDoInput.classList).includes('delete')
-
-    if (clickedElement) {
-        valueDoInput.parentElement.remove()
+    const valueDoInput = event.target.dataset.trash
+    // const clickedElement = Array.from(valueDoInput.classList).includes('delete')
+    const refferenciaDoTodo =  document.querySelector(`[data-todo="${valueDoInput}"]`)
+    // console.log(valueDoInput)
+    if (valueDoInput) {
+        refferenciaDoTodo.remove()
     }
 })
 
