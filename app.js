@@ -28,21 +28,25 @@ todosContainer.addEventListener('click', event => {
         refferenciaDoTodo.remove()
     }
 })
+const newArrayFilter = filtrandoTodos => {
+    return filter(todo => !todo.textContent.toLowerCase().includes(filtrandoTodos))
+}
 
-const filtrandoTodosDoInput = filtrandoTodos => {
+const todoClassList = (remover, adicionar) => {
+    forEach(todo => {
+        todo.classList.remove(remover)
+        todo.classList.add(adicionar)
+    })    
+}
+
+const filtrandoTodosDoInput = () => {
     Array.from(todosContainer.children)
-        .filter(todo => !todo.textContent.toLowerCase().includes(filtrandoTodos))
-        .forEach(todo => {
-            todo.classList.remove('d-flex')
-            todo.classList.add('hedden')
-        })
+        .newArrayFilter(filtrandoTodos)
+        .todoClassList('d-flex', 'hedden')
     
     Array.from(todosContainer.children)
-        .filter(todo => todo.textContent.toLowerCase().includes(filtrandoTodos))
-        .forEach(todo => {
-            todo.classList.remove('hedden')
-            todo.classList.add('d-flex')
-        })
+        .newArrayFilter()
+        .todoClassList('hedden', 'd-flex')
 
 }
 
