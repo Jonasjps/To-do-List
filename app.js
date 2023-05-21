@@ -32,20 +32,33 @@ todosContainer.addEventListener('click', event => {
     const clickedElement = event.target
     removeTodo(clickedElement)
 })
+const novoArrayFilter = (todos,filtrandoInputValue, mechedfilter) => {
+   return todos
+    .filter(todo => {
+      const mechedh = todo.textContent.toLowerCase().includes(filtrandoInputValue)
+        return mechedfilter ? mechedh : !mechedh 
+    })
+}
+const hiDetodos = (todos,filtrandoInputValue) => {
+    novoArrayFilter(todos, filtrandoInputValue,false)
+    .forEach(todo => {
+        todo.classList.remove('d-flex')
+        todo.classList.add('hidden')
+    })
+}
+
+const showTodos = (todos, filtrandoInputValue) => {
+    novoArrayFilter(todos, filtrandoInputValue,true)
+    .forEach(todo => {
+        todo.classList.remove('hidden')
+        todo.classList.add('d-flex')
+    })
+}
 
 formSearch.addEventListener('input', event => {
     const filtrandoInputValue = event.target.value
-    Array.from(todosContainer.children)
-        .filter(todo => !todo.textContent.toLowerCase().includes(filtrandoInputValue))
-        .forEach(todo => {
-            todo.classList.remove('d-flex')
-            todo.classList.add('hidden')
-        })
+    const todos = Array.from(todosContainer.children)
 
-        Array.from(todosContainer.children)
-        .filter(todo => todo.textContent.toLowerCase().includes(filtrandoInputValue))
-        .forEach(todo => {
-            todo.classList.remove('hidden')
-            todo.classList.add('d-flex')
-        })
+    hiDetodos(todos,filtrandoInputValue)
+    showTodos(todos,filtrandoInputValue)
 })
