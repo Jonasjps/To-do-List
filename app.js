@@ -2,17 +2,21 @@ const formAddTodo = document.querySelector('.form-add-todo')
 const todosContainer = document.querySelector('.todos-container')
 const formSearch = document.querySelector('.form-search')
 
-formAddTodo.addEventListener('submit', event => {
-    event.preventDefault()
-    const valueDoInput = event.target.add.value.trim()
-  if(valueDoInput.length) {
-      todosContainer.innerHTML += ` 
+const addTodo = valueDoInput => {
+    if(valueDoInput.length) {
+        todosContainer.innerHTML += ` 
           <li class="list-group-item d-flex justify-content-between align-items-center" data-todo="${valueDoInput}">
               <span>${valueDoInput}</span>
               <i class="far fa-trash-alt " data-trash="${valueDoInput}"></i>
           </li>`
-     }
-  event.target.reset()
+    }
+    event.target.reset()
+}
+
+formAddTodo.addEventListener('submit', event => {
+    event.preventDefault()
+    const valueDoInput = event.target.add.value.trim()
+    addTodo(valueDoInput)
 })
 
 const removeTodo = clickedElement => {
