@@ -15,20 +15,18 @@ formAddTodo.addEventListener('submit', event => {
   event.target.reset()
 })
 
-todosContainer.addEventListener('click', event => {
-    const clickedElement = event.target
+const removeTodo = clickedElement => {
     const removeElement = clickedElement.dataset.trash
-    const todo = document.querySelector(`[data-todo="${clickedElement.dataset.trash}"]`) 
-   
+    const todo = document.querySelector(`[data-todo="${removeElement}"]`) 
+    
     if(removeElement) {
         todo.remove()
     }
-    
-    // const removElement = Array.from(clickedElement.classList).includes('delete')
+}
 
-//    if (removElement) {
-//     clickedElement.parentElement.remove()
-//    }
+todosContainer.addEventListener('click', event => {
+    const clickedElement = event.target
+    removeTodo(clickedElement)
 })
 
 formSearch.addEventListener('input', event => {
