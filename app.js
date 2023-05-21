@@ -14,3 +14,12 @@ formAddTodo.addEventListener('submit', event => {
 
   event.target.reset()
 })
+
+todosContainer.addEventListener('click', event => {
+    const clickedElement = event.target
+    const removElement = Array.from(clickedElement.classList).includes('delete')
+
+   if (removElement) {
+    clickedElement.parentElement.remove()
+   }
+})
