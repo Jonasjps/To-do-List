@@ -17,6 +17,3 @@ input[type=text]:focus {
 .delete {
   cursor: pointer;
 }
-.hedden {
-display: none
-}
