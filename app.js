@@ -40,6 +40,7 @@ const novoArrayFilter = (todos,filtrandoInputValue, mechedfilter) => {
         return mechedfilter ? mechedh : !mechedh 
     })
 }
+
 const manipulateClass = (todos, removeClass, addClass) => {
     todos.forEach(todo => {
         todo.classList.remove(removeClass)
