@@ -32,6 +32,7 @@ todosContainer.addEventListener('click', event => {
     const clickedElement = event.target
     removeTodo(clickedElement)
 })
+
 const novoArrayFilter = (todos,filtrandoInputValue, mechedfilter) => {
    return todos
     .filter(todo => {
@@ -39,20 +40,21 @@ const novoArrayFilter = (todos,filtrandoInputValue, mechedfilter) => {
         return mechedfilter ? mechedh : !mechedh 
     })
 }
-const hiDetodos = (todos,filtrandoInputValue) => {
-    novoArrayFilter(todos, filtrandoInputValue,false)
-    .forEach(todo => {
-        todo.classList.remove('d-flex')
-        todo.classList.add('hidden')
+const manipulateClass = (todos, removeClass, addClass) => {
+    todos.forEach(todo => {
+        todo.classList.remove(removeClass)
+        todo.classList.add(addClass)
     })
 }
 
-const showTodos = (todos, filtrandoInputValue) => {
-    novoArrayFilter(todos, filtrandoInputValue,true)
-    .forEach(todo => {
-        todo.classList.remove('hidden')
-        todo.classList.add('d-flex')
-    })
+const hiDetodos = (todos,filtrandoInputValue) => {
+    const hitodos = novoArrayFilter(todos, filtrandoInputValue,false)
+    manipulateClass(hitodos, 'd-flex', 'hidden')
+}
+
+const showDeTodos = (todos, filtrandoInputValue) => {
+    const showtodos = novoArrayFilter(todos, filtrandoInputValue,true)
+    manipulateClass(showtodos, 'hidden', 'd-flex')
 }
 
 formSearch.addEventListener('input', event => {
@@ -60,5 +62,5 @@ formSearch.addEventListener('input', event => {
     const todos = Array.from(todosContainer.children)
 
     hiDetodos(todos,filtrandoInputValue)
-    showTodos(todos,filtrandoInputValue)
+    showDeTodos(todos,filtrandoInputValue)
 })
