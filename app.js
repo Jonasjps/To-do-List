@@ -17,13 +17,16 @@ formAddTodo.addEventListener('submit', event => {
     event.target.reset()
 })
 
-todosContainer.addEventListener('click', event => {
-    const clickedElementValue = event.target
+const deleteTodo = clickedElementValue => {
     const removeTodo = clickedElementValue.dataset.trash
-    const todo = document.querySelector(`[data-todo="${clickedElementValue.dataset.trash}"]`)
+    const todo = document.querySelector(`[data-todo="${removeTodo}"]`)
     if(removeTodo) {
         todo.remove()
     }
+}
+todosContainer.addEventListener('click', event => {
+    const clickedElementValue = event.target
+    deleteTodo(clickedElementValue)
 })
 
 formSearch.addEventListener('input', event => {
