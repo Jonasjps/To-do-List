@@ -31,20 +31,33 @@ todosContainer.addEventListener('click', event => {
     const clickedElementValue = event.target
     deleteTodo(clickedElementValue)
 })
+const MetrodoFilter = (todos, filtrandoInputValue, methedFilter) => todos
+    .filter(todo => {
+        const methetArray = todo.textContent.toLowerCase().includes(filtrandoInputValue)
+        return methedFilter ? methetArray : !methetArray
+    })
 
-formSearch.addEventListener('input', event => {
-    const filtrandoInputValue = event.target.value
-    Array.from(todosContainer.children)
-        .filter(todo =>  !todo.textContent.toLowerCase().includes(filtrandoInputValue))
-        .forEach(todo => {
-            todo.classList.remove('d-flex')
-            todo.classList.add('hidden')
-        })
 
-        Array.from(todosContainer.children)
-        .filter(todo =>  todo.textContent.toLowerCase().includes(filtrandoInputValue))
+const hiDetodos = (todos,filtrandoInputValue) =>  {
+   MetrodoFilter(todos,filtrandoInputValue, false)
+    .forEach(todo => {
+        todo.classList.remove('d-flex')
+        todo.classList.add('hidden')
+    })
+}
+
+const showDeTodos = (todos, filtrandoInputValue) => {
+    MetrodoFilter(todos, filtrandoInputValue, true)
         .forEach(todo => {
             todo.classList.remove('hidden')
             todo.classList.add('d-flex')
         })
+}
+
+formSearch.addEventListener('input', event => {
+    const filtrandoInputValue = event.target.value
+    const todos = Array.from(todosContainer.children)
+
+    hiDetodos(todos, filtrandoInputValue)
+    showDeTodos(todos, filtrandoInputValue)
 })
