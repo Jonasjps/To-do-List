@@ -38,20 +38,20 @@ const MetrodoFilter = (todos, filtrandoInputValue, methedFilter) => todos
     })
 
 
-const hiDetodos = (todos,filtrandoInputValue) =>  {
-   MetrodoFilter(todos,filtrandoInputValue, false)
-    .forEach(todo => {
-        todo.classList.remove('d-flex')
-        todo.classList.add('hidden')
+const manipulatiClass = (todos, classRemove, classAdd) =>  {
+    todos.forEach(todo => {
+        todo.classList.remove(classRemove)
+        todo.classList.add(classAdd)
     })
+}
+const hiDetodos = (todos,filtrandoInputValue) =>  {
+   const hiTodos = MetrodoFilter(todos,filtrandoInputValue, true)
+    manipulatiClass(hiTodos, 'hidden' , 'd-flex')
 }
 
 const showDeTodos = (todos, filtrandoInputValue) => {
-    MetrodoFilter(todos, filtrandoInputValue, true)
-        .forEach(todo => {
-            todo.classList.remove('hidden')
-            todo.classList.add('d-flex')
-        })
+    const showTodos = MetrodoFilter(todos, filtrandoInputValue, false)
+        manipulatiClass(showTodos, 'd-flex', 'hidden')
 }
 
 formSearch.addEventListener('input', event => {
