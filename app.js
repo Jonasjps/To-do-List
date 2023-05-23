@@ -27,10 +27,12 @@ const deleteTodo = clickedElementValue => {
         todo.remove()
     }
 }
+
 todosContainer.addEventListener('click', event => {
     const clickedElementValue = event.target
     deleteTodo(clickedElementValue)
 })
+
 const MetrodoFilter = (todos, filtrandoInputValue, methedFilter) => todos
     .filter(todo => {
         const methetArray = todo.textContent.toLowerCase().includes(filtrandoInputValue)
@@ -51,7 +53,7 @@ const hiDetodos = (todos,filtrandoInputValue) =>  {
 
 const showDeTodos = (todos, filtrandoInputValue) => {
     const showTodos = MetrodoFilter(todos, filtrandoInputValue, false)
-        manipulatiClass(showTodos, 'd-flex', 'hidden')
+    manipulatiClass(showTodos, 'd-flex', 'hidden')
 }
 
 formSearch.addEventListener('input', event => {
