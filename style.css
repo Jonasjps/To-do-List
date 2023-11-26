@@ -24,3 +24,6 @@ input[type=text]:focus {
 footer {
   background: lightgray;
 }
+p-footer: {
+  color: withe;
+}
