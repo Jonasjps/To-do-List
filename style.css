@@ -23,6 +23,7 @@ input[type=text]:focus {
 
 footer {
   background:#484E53;
+  padding: 5px;
   width: 370px;
   border-radius: 100px;
   margin: auto;
