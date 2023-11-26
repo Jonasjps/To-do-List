@@ -23,6 +23,8 @@ input[type=text]:focus {
 
 footer {
   background:#484E53;
+  width: 350px;
+  border-radius: 100px;
 }
 p-footer: {
   color: white;
