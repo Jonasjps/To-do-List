@@ -20,3 +20,7 @@ input[type=text]:focus {
 .hidden {
   display: none;
 }
+
+footer {
+  background: lightgray;
+}
