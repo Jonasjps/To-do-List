@@ -39,7 +39,6 @@ const MetrodoFilter = (todos, filtrandoInputValue, methedFilter) => todos
         return methedFilter ? methetArray : !methetArray
     })
 
-
 const manipulatiClass = (todos, classRemove, classAdd) =>  {
     todos.forEach(todo => {
         todo.classList.remove(classRemove)
